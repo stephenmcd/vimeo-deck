@@ -1,4 +1,3 @@
-
 // vimeo-deck.js by Stephen McDonald (@stephen_mcd)
 //
 // See https://github.com/stephenmcd/vimeo-deck/ for
@@ -14,8 +13,8 @@ var VimeoDeck = function(options) {
 
     var self = this;
     options = options || {};
-    self.onTocLoaded = options.onTocLoaded || function() {}
-    self.onSlideChanged = options.onSlideChanged || function() {}
+    self.onTocLoaded = options.onTocLoaded || function() {};
+    self.onSlideChanged = options.onSlideChanged || function() {};
 
     // Sets the video time for a slide number. When the video
     // reaches that point in time, the current slide will be
