@@ -25,7 +25,18 @@ var VimeoDeck = function(options) {
     //
     // An optional title arg can also be supplied, which will be
     // used to generate links in the table of contents.
+	//
+	// The methodh also accepts a object as first paramter.
+	// done that way so can be nice with array of objects.
     self.setSlide = function(slide, time, tocTitle) {
+		// if a object
+		if(typeof(slide) === 'object'){
+			time = slide.time;
+			tocTitle = slide.tocTitle
+			slide = slide.slide;
+		}
+		
+		
         time = String(time).split(':');
         switch (time.length) {
             case 2:
