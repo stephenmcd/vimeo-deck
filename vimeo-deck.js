@@ -25,23 +25,19 @@ var VimeoDeck = function(options) {
     //
     // An optional title arg can also be supplied, which will be
     // used to generate links in the table of contents.
-    self.setSlide = function(slides) {
-        if(!slides.slide || !slides.time) {
-            throw "A slides object must have a slide and time"
-        }else{
-            time = String(time).split(':');
-            switch (time.length) {
-                case 2:
-                    time = Number(time[0] * 60) + Number(time[1]);
-                    break;
-                case 1:
-                    time = Number(time[0]);
-                    break;
-            }
-            slides[slide] = time;
-            if (options.tocID && tocTitle) {
-                toc[toc.length] = {time: time, title: tocTitle};
-            }
+    self.setSlide = function(slide, time, tocTitle) {
+        time = String(time).split(':');
+        switch (time.length) {
+            case 2:
+                time = Number(time[0] * 60) + Number(time[1]);
+                break;
+            case 1:
+                time = Number(time[0]);
+                break;
+        }
+        slides[slide] = time;
+        if (options.tocID && tocTitle) {
+            toc[toc.length] = {time: time, title: tocTitle};
         }
     };
 
