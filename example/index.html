@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo</title>
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<style>
+	body {
+		font:12px Arial, Sans-serif;
+		color:gray;
+	}
+	#toc {
+		
+	}
+	
+	.speakerdeck-iframe, #vimeo {
+		float:left;
+		display:block;
+		width:300px !important;
+		height:300px !important;
+		height:auto;
+		margin:10px;
+	}
+	</style>
+</head>
+<body>
+    
+    <!--<iframe id="vimeo" src="http://player.vimeo.com/video/VIDEO_ID?api=1&player_id=vimeo"></iframe>-->
+	
+	<script src="../vimeo-deck.js"></script>
+	<!-- Kids dont do this at home -->
+	<table>
+		<tr>
+			<td><ol id="toc">
+		    	<h1>Table of contents</h1>
+		    </ol>
+			    <p><a href="http://vimeo.com/1149281">Andy Clarke on Web Layout</a> from <a href="http://vimeo.com/zeldman">Jeffrey Zeldman</a> on <a href="http://vimeo.com">Vimeo</a>.</p></td>
+			<td><iframe id="vimeo" src="http://player.vimeo.com/video/1149281?api=1&player_id=vimeo" width="500" height="282" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td>
+			<td><script async class="speakerdeck-embed" data-id="5007d4ad7f4715000204da2f" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script></td>
+		</tr>
+	</table>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+	<script>
+
+	    var options = {
+	        tocID: '#toc',
+	        onTocLoaded: function() {
+	            console.log('Table of contents is loaded');
+	        },
+	        onSlideChanged: function(slideNumber) {
+	            console.log('Video playback changed to slide #' + slideNumber);
+	        }
+	    };
+
+	    var vd = VimeoDeck(options); // Options are optional
+
+		var slides = [
+		{'slide':6, 'time': '0:30', 'tocTitle': '30 seconds'},
+		{'slide':7, 'time': '0:35', 'tocTitle': '35 seconds'},
+		{'slide':8, 'time': '0:40', 'tocTitle': '40 seconds'},
+		{'slide':9, 'time': '0:45', 'tocTitle': '45 seconds'}
+		];
+
+
+	    vd.setSlide(1, '0:00', 'Welcome');
+	    vd.setSlide(2, '0:10', '10 seconds of movie bah');
+	    vd.setSlide(3, '0:15', '15 seconds after begin something happen');
+	    vd.setSlide(4, '0:20', '20 seconds did u see it?');
+	    vd.setSlide(5, 25, '25 seconds u probably lost'); // time can also be an integer for total seconds
+		for(var i in slides) {
+			vd.setSlide(slides[i]);
+		}
+
+	</script>
+</body>
+</html>
