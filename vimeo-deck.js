@@ -29,10 +29,10 @@ var VimeoDeck = function(options) {
     // The method also accepts an object as the first paramter,
     // eg: vd.setSlide({slide: 1, time: '00:12', tocTitle: 'My title'});
     self.setSlide = function(slide, time, tocTitle) {
-        if (typeof(slide) === 'object') {
+        if (slide.slide) {
+            slide = slide.slide;
             time = slide.time;
             tocTitle = slide.tocTitle
-            slide = slide.slide;
         }
         time = String(time).split(':');
         switch (time.length) {
@@ -43,9 +43,11 @@ var VimeoDeck = function(options) {
                 time = Number(time[0]);
                 break;
         }
-        slides[slide] = time;
-        if (options.tocID && tocTitle) {
-            toc[toc.length] = {time: time, title: tocTitle};
+        if (time > 0 || slide == 1) {
+            slides[slide] = time;
+            if (options.tocID && tocTitle) {
+                toc[toc.length] = {time: time, title: tocTitle};
+            }
         }
     };
 
