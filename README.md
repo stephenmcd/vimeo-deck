@@ -66,7 +66,7 @@ throughout the video.
 Here you can see the `setSlide` method used for defining the point in
 time when each slide should be loaded. It accepts three arguments:
 
-* `slideNumber`: The slide number to define the time point for
+* `slide`: The slide number to define the time point for
 * `time`: The point in time for the slide - can be a string in the
   format `minutes:seconds`, or an integer representing the time in
   total seconds
@@ -74,6 +74,21 @@ time when each slide should be loaded. It accepts three arguments:
   contents - when defined, the link in the table of contents will
   move to the corresponding point in the video and presentation when
   clicked
+
+You can also pass an object to the `setSlide` method if preferred:
+
+    vd.setSlide({slide: 1, time: '00:12', tocTitle: 'My title'});
+
+Finally, you can use the `setSlides` method which accepts an array of
+slide objects, allowing all slide data to be stored in a single
+variable if preferred:
+
+    var slides = [
+        {slide: 1, time: '00:12', tocTitle: 'My title'},
+        {slide: 2, time: '00:17'},
+        {slide: 3, time: '00:22'}
+    ];
+    vd.setSlides(slides);
 
 #### Options
 
