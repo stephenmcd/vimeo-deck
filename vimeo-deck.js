@@ -27,7 +27,7 @@ var VimeoDeck = function(options) {
     // used to generate links in the table of contents.
     //
     // The method also accepts an object as the first paramter,
-    // eg setSlide({slide: 1, time: '00:12', tocTitle: 'My title'});
+    // eg: vd.setSlide({slide: 1, time: '00:12', tocTitle: 'My title'});
     self.setSlide = function(slide, time, tocTitle) {
         if (typeof(slide) === 'object') {
             time = slide.time;
@@ -46,6 +46,19 @@ var VimeoDeck = function(options) {
         slides[slide] = time;
         if (options.tocID && tocTitle) {
             toc[toc.length] = {time: time, title: tocTitle};
+        }
+    };
+
+    // Convenience method that accepts an array of slide objects to
+    // set, eg:
+    // vd.setSlides([
+    //    {slide: 1, time: '00:12', tocTitle: 'My title'},
+    //    {slide: 2, time: '00:17'},
+    //    {slide: 3, time: '00:22'}
+    // ]);
+    self.setSlides = function(slides) {
+        for (var i = 0; i < slides.length; i++) {
+            self.setSlide(slides[i]);
         }
     };
 
