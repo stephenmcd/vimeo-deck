@@ -110,7 +110,7 @@ var VimeoDeck = function(options) {
         frame.contentWindow.postMessage(JSON.stringify({
             method: method,
             value: value
-        }), frame.src.split('?')[0]);
+        }), frame.src.split('?')[0].toLowerCase().replace('http:', 'https:'));
     };
 
     // Callback handler for the Vimeo API. When the 'ready' event is
